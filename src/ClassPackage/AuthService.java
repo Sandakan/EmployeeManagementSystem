@@ -17,12 +17,14 @@ final public class AuthService {
             String pass = data[1];
             String firstName = data[2];
             String lastName = data[3];
-            String userType = data[4];
+            String epfNumber = data[4];
+            String department = data[5];
+            String designation = data[6];
 
             if (id.equals(userId) && pass.equals(password)) {
                 System.out.println("Login success");
 
-                User user = new User(id, pass, firstName, lastName, userType);
+                User user = new User(id, pass, firstName, lastName, epfNumber, department, designation);
                 return user;
             }
         }

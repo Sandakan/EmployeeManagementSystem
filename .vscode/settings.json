@@ -3,5 +3,10 @@
 		"comments": "#00b894",
 		"textMateRules": []
 	},
-	"java.project.referencedLibraries": ["lib/**/*.jar", "dependencies\\json-simple-1.1.1.jar"]
+	"java.project.referencedLibraries": [
+		"lib/**/*.jar",
+		"dependencies\\json-simple-1.1.1.jar",
+		"dependencies\\flatlaf-3.4.jar"
+	],
+	"java.format.settings.url": "eclipse-formatter.xml"
 }
