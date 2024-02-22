@@ -11,7 +11,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-// import org.json.simple.*;
 
 /**
  *
@@ -29,14 +28,6 @@ abstract class FileSystem {
     public FileSystem(String fileName) {
         this.fileName = fileName;
         initialize();
-
-        // String s = "[0,{\"1\":{\"2\":{\"3\":{\"4\":[5,{\"6\":7}]}}}}]";
-        // Object obj = JSONValue.parse(s);
-        // JSONArray array = (JSONArray) obj;
-
-        // System.out.println("The 2nd element of array");
-        // System.out.println(array.get(1));
-        // System.out.println();
     }
 
     public boolean isFileAvailable() {

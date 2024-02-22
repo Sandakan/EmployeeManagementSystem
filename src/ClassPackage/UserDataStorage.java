@@ -3,6 +3,7 @@ package ClassPackage;
 import java.util.ArrayList;
 
 public class UserDataStorage extends FileSystem {
+
     public UserDataStorage() {
         super("USERS");
     }
@@ -31,8 +32,7 @@ public class UserDataStorage extends FileSystem {
         ArrayList<User> userData = getData();
 
         for (User user : userData) {
-            if (user.getFirstName().equals(firstName) && user.getLastName().equals(lastName)
-                    && user.getEpfNumber().equals(epfNumber))
+            if (user.getEpfNumber().equals(epfNumber))
                 return true;
         }
         return false;
@@ -49,11 +49,17 @@ public class UserDataStorage extends FileSystem {
         return String.valueOf(nextUserId);
     }
 
-    public void addUser(User user) {
-        String[] userDataString = { user.getUserId(), user.getPassword(), user.getFirstName(), user.getLastName(),
-                user.getEpfNumber(), user.getDepartment(), user.getDesignation() };
+    public boolean addUser(User user) {
+        try {
+            String[] userDataString = { user.getUserId(), user.getPassword(), user.getFirstName(), user.getLastName(),
+                    user.getEpfNumber(), user.getDepartment(), user.getDesignation() };
 
-        String record = createRecord(userDataString);
-        appendFileData(record);
+            String record = createRecord(userDataString);
+            appendFileData(record);
+            return true;
+        } catch (Exception e) {
+            System.err.println("An error occurred when adding a new user." + e);
+        }
+        return false;
     }
 }

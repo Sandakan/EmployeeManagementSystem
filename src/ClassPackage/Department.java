@@ -1,10 +1,20 @@
 package ClassPackage;
 
 public class Department {
-    public String name;
+    private String departmentId;
+    private String name;
 
-    public Department(String name) {
+    public Department(String departmentId, String name) {
+        this.departmentId = departmentId;
         this.name = name;
+    }
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public String getName() {
+        return name;
     }
 
 }
