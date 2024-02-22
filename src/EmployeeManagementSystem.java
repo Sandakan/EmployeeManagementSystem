@@ -18,9 +18,9 @@ public class EmployeeManagementSystem {
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (Exception ex) {
-            System.err.println("Failed to initialize LaF");
+            System.err.println("Failed to initialize FlatLightLaf Look and Feel");
         }
-        
+
         LoginFrame login = new LoginFrame();
         login.setVisible(true);
     }

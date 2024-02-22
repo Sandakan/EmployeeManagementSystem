@@ -18,8 +18,9 @@ import java.util.Scanner;
  * @author adsan
  */
 
-final public class FileSystem {
+abstract class FileSystem {
 
+    final private String dataSeperator = ":";
     final private String filePath = "D://EmployeeManagementSystemAppData//";
     final private String fileName;
 
@@ -68,6 +69,10 @@ final public class FileSystem {
         }
     }
 
+    public String createRecord(String[] data) {
+        return String.join(dataSeperator, data);
+    }
+
     public String getFileName() {
         return fileName + ".txt";
     }
@@ -76,7 +81,7 @@ final public class FileSystem {
         return filePath + getFileName();
     }
 
-    public ArrayList<String[]> readFileData() {
+    protected ArrayList<String[]> readFileData() {
         ArrayList<String[]> records = new ArrayList<String[]>();
 
         try {
@@ -85,7 +90,7 @@ final public class FileSystem {
 
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                String[] data = line.split(":");
+                String[] data = line.split(dataSeperator);
                 records.add(data);
             }
 
@@ -98,7 +103,7 @@ final public class FileSystem {
         return records;
     }
 
-    private void writeFileData(String data, boolean append) {
+    protected void writeFileData(String data, boolean append) {
         try {
             FileWriter writer = new FileWriter(file, append);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
@@ -113,41 +118,10 @@ final public class FileSystem {
         }
     }
 
-    // other main methods
-    // public ArrayList<HashMap<String, String>> getFileData() {
-    // ArrayList<String> records = readFileData();
-
-    // switch (fileName) {
-    // case "USERS": {
-    // ArrayList<HashMap<String, String>> userRecords = new
-    // ArrayList<HashMap<String, String>>();
-
-    // if (records.size() == 0)
-    // return userRecords;
-
-    // for (String record : records) {
-    // String[] userData = record.split(":");
-
-    // HashMap<String, String> user = new HashMap<String, String>();
-    // user.put("userId", userData[0]);
-    // user.put("password", userData[1]);
-    // user.put("firstName", userData[2]);
-    // user.put("lastName", userData[3]);
-    // user.put("userType", userData[4]);
-    // userRecords.add(user);
-
-    // }
-
-    // return userRecords;
-    // }
-
-    // default:
-    // return new ArrayList<HashMap<String, String>>();
-    // }
-
-    // }
-
     public void appendFileData(String data) {
         writeFileData(data, true);
     }
+
+    @SuppressWarnings("rawtypes")
+    public abstract ArrayList getData();
 }

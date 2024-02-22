@@ -48,6 +48,10 @@ public class User {
         return designation;
     }
 
+    public boolean checkCredentials(String password) {
+        return getPassword().equals(password);
+    }
+
     public User(String userId, String password, String firstName, String lastName, String epfNumber,
             String department) {
         this.userId = userId;
@@ -59,7 +63,7 @@ public class User {
         this.designation = "EMPLOYEE";
     }
 
-    protected User(String userId, String password, String firstName, String lastName, String epfNumber,
+    public User(String userId, String password, String firstName, String lastName, String epfNumber,
             String department, String designation) {
         this.userId = userId;
         this.password = password;
