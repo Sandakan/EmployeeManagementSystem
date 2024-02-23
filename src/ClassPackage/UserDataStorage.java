@@ -62,4 +62,35 @@ public class UserDataStorage extends FileSystem {
         }
         return false;
     }
+
+    public ArrayList<User> searchEmployees(String firstName, String lastName, String epfNumber, String department,
+            String designation) {
+        ArrayList<User> userData = getData();
+        ArrayList<User> filteredUserData = new ArrayList<>();
+
+        for (User user : userData) {
+            boolean isFirstNameAvailable = ((firstName != null && !firstName.isBlank())
+                    ? (user.getFirstName().toLowerCase().contains(firstName.toLowerCase()))
+                    : true);
+            boolean isLastNameAvailable = ((lastName != null && !lastName.isBlank())
+                    ? (user.getLastName().toLowerCase().contains(lastName.toLowerCase()))
+                    : true);
+            boolean isEpfNumberAvailable = ((epfNumber != null && !epfNumber.isBlank())
+                    ? (user.getEpfNumber().toLowerCase().contains(epfNumber.toLowerCase()))
+                    : true);
+            boolean isDepartmentAvailable = ((department != null && !department.isBlank())
+                    ? (user.getDepartment().equals(department))
+                    : true);
+            boolean isDesignationAvailable = ((designation != null && !designation.isBlank())
+                    ? (user.getDesignation().equals(designation))
+                    : true);
+
+            if (isFirstNameAvailable && isLastNameAvailable && isEpfNumberAvailable && isDepartmentAvailable
+                    && isDesignationAvailable) {
+                filteredUserData.add(user);
+            }
+        }
+
+        return filteredUserData;
+    }
 }

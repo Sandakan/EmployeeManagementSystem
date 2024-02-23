@@ -5,7 +5,7 @@
  */
 import com.formdev.flatlaf.FlatLightLaf;
 
-import UIPackage.LoginFrame;
+import UIPackage.Login.LoginFrame;
 import javax.swing.UIManager;
 
 /**

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UIPackage;
+package UIPackage.Admin;
 
 import ClassPackage.User;
 import ClassPackage.Department;
@@ -18,24 +18,23 @@ import javax.swing.JOptionPane;
  *
  * @author adsan
  */
-public class AddNewEmployeePanel extends javax.swing.JPanel {
+public class CreateNewAccountPanel extends javax.swing.JPanel {
 
+    private UserDataStorage userDataStorage;
     private DepartmentDataStorage departmentDataStorage;
     private DesignationDataStorage designationDataStorage;
-    private UserDataStorage userDataStorage;
 
     /**
-     * Creates new form AddNewEmployeePanel
+     * Creates new form CreateNewAccountPanel
      */
-    public AddNewEmployeePanel() {
+    public CreateNewAccountPanel() {
+        this.userDataStorage = new UserDataStorage();
         this.departmentDataStorage = new DepartmentDataStorage();
         this.designationDataStorage = new DesignationDataStorage();
-        this.userDataStorage = new UserDataStorage();
         initComponents();
-        clearAndSetAddNewEmployeePanelProperties();
     }
 
-    private void clearAndSetAddNewEmployeePanelProperties() {
+    private void clearAndSetCreateNewAccountPanelProperties() {
         nextUserIdLabel.setText(userDataStorage.getNextUserId());
 
         passwordField.setText("");
@@ -57,11 +56,6 @@ public class AddNewEmployeePanel extends javax.swing.JPanel {
         DefaultComboBoxModel<String> designationTypeFieldModel = new DefaultComboBoxModel<>();
 
         for (Designation designation : designations) {
-            String designationName = designation.getName();
-            if (designationName.equals("HR_MANAGER") || designationName.equals("HR_ASSISTANT")) {
-                continue;
-            }
-
             designationTypeFieldModel.addElement(designation.getName());
         }
 
@@ -77,78 +71,78 @@ public class AddNewEmployeePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel5 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         userIdLabelContainer = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
         nextUserIdLabel = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         nameFieldsContainer = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         firstNameField = new javax.swing.JTextField();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         lastNameField = new javax.swing.JTextField();
         passwordFieldsContainer = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
-        jPanel13 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         confirmPasswordField = new javax.swing.JPasswordField();
-        epfNumberFieldContainer2 = new javax.swing.JPanel();
-        jPanel14 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        epfNumberFieldContainer = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         epfNumberField = new javax.swing.JTextField();
         designationFieldContainer = new javax.swing.JPanel();
         designationTypeField = new javax.swing.JComboBox<>();
-        jLabel13 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         departmentFieldContainer = new javax.swing.JPanel();
         departmentTypeField = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
-        createAccountBtnContainer2 = new javax.swing.JPanel();
-        addEmployeeBtn = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        createAccountBtnContainer = new javax.swing.JPanel();
+        createAccountBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEFT);
         flowLayout1.setAlignOnBaseline(true);
         setLayout(flowLayout1);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setText("Add New Employee");
-        add(jLabel5);
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setText("Create New Account");
+        add(jLabel2);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.Y_AXIS));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
 
         userIdLabelContainer.setBackground(new java.awt.Color(255, 255, 255));
         userIdLabelContainer.setPreferredSize(new java.awt.Dimension(592, 40));
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         nextUserIdLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         nextUserIdLabel.setText("1");
 
-        jLabel6.setText("New User ID");
+        jLabel4.setText("New User ID");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jLabel6)
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jLabel4)
                 .addGap(21, 21, 21)
                 .addComponent(nextUserIdLabel)
                 .addContainerGap())
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nextUserIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -158,28 +152,55 @@ public class AddNewEmployeePanel extends javax.swing.JPanel {
             userIdLabelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(userIdLabelContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(723, Short.MAX_VALUE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(722, Short.MAX_VALUE))
         );
         userIdLabelContainerLayout.setVerticalGroup(
             userIdLabelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userIdLabelContainerLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel6.add(userIdLabelContainer);
+        jPanel3.add(userIdLabelContainer);
 
         nameFieldsContainer.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setAlignmentX(1.0F);
-        jPanel8.setAlignmentY(1.0F);
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setAlignmentX(1.0F);
+        jPanel7.setAlignmentY(1.0F);
 
-        jLabel8.setText("First Name");
+        jLabel5.setText("First Name");
 
         firstNameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(217, 217, 217), 1, true));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setText("Last Name");
+
+        lastNameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(217, 217, 217), 1, true));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -188,42 +209,15 @@ public class AddNewEmployeePanel extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6)
+                    .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel9.setText("Last Name");
-
-        lastNameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(217, 217, 217), 1, true));
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9)
+                .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -235,43 +229,43 @@ public class AddNewEmployeePanel extends javax.swing.JPanel {
             nameFieldsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(nameFieldsContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(282, Short.MAX_VALUE))
         );
         nameFieldsContainerLayout.setVerticalGroup(
             nameFieldsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(nameFieldsContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(nameFieldsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jPanel6.add(nameFieldsContainer);
+        jPanel3.add(nameFieldsContainer);
 
         passwordFieldsContainer.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel12.setAlignmentX(1.0F);
-        jPanel12.setAlignmentY(1.0F);
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setAlignmentX(1.0F);
+        jPanel9.setAlignmentY(1.0F);
 
         jLabel10.setText("Password");
 
         passwordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(217, 217, 217), 1, true));
 
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel10)
             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -279,25 +273,25 @@ public class AddNewEmployeePanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel11.setText("Confirm Password");
 
         confirmPasswordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(217, 217, 217), 1, true));
 
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12))
         );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -310,80 +304,74 @@ public class AddNewEmployeePanel extends javax.swing.JPanel {
             passwordFieldsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(passwordFieldsContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(270, Short.MAX_VALUE))
         );
         passwordFieldsContainerLayout.setVerticalGroup(
             passwordFieldsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(passwordFieldsContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(passwordFieldsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jPanel6.add(passwordFieldsContainer);
+        jPanel3.add(passwordFieldsContainer);
 
-        epfNumberFieldContainer2.setBackground(new java.awt.Color(255, 255, 255));
+        epfNumberFieldContainer.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel12.setText("EPF Number");
+        jLabel7.setText("EPF Number");
 
         epfNumberField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(217, 217, 217), 1, true));
 
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
                     .addComponent(epfNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12)
+                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(epfNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
-        javax.swing.GroupLayout epfNumberFieldContainer2Layout = new javax.swing.GroupLayout(epfNumberFieldContainer2);
-        epfNumberFieldContainer2.setLayout(epfNumberFieldContainer2Layout);
-        epfNumberFieldContainer2Layout.setHorizontalGroup(
-            epfNumberFieldContainer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(epfNumberFieldContainer2Layout.createSequentialGroup()
+        javax.swing.GroupLayout epfNumberFieldContainerLayout = new javax.swing.GroupLayout(epfNumberFieldContainer);
+        epfNumberFieldContainer.setLayout(epfNumberFieldContainerLayout);
+        epfNumberFieldContainerLayout.setHorizontalGroup(
+            epfNumberFieldContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(epfNumberFieldContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(572, Short.MAX_VALUE))
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(571, Short.MAX_VALUE))
         );
-        epfNumberFieldContainer2Layout.setVerticalGroup(
-            epfNumberFieldContainer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(epfNumberFieldContainer2Layout.createSequentialGroup()
+        epfNumberFieldContainerLayout.setVerticalGroup(
+            epfNumberFieldContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(epfNumberFieldContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel6.add(epfNumberFieldContainer2);
+        jPanel3.add(epfNumberFieldContainer);
 
         designationFieldContainer.setBackground(new java.awt.Color(255, 255, 255));
 
-        designationTypeField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                designationTypeFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setText("Designation");
+        jLabel9.setText("Designation");
 
         javax.swing.GroupLayout designationFieldContainerLayout = new javax.swing.GroupLayout(designationFieldContainer);
         designationFieldContainer.setLayout(designationFieldContainerLayout);
@@ -392,25 +380,25 @@ public class AddNewEmployeePanel extends javax.swing.JPanel {
             .addGroup(designationFieldContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(designationFieldContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
+                    .addComponent(jLabel9)
                     .addComponent(designationTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(572, Short.MAX_VALUE))
+                .addContainerGap(571, Short.MAX_VALUE))
         );
         designationFieldContainerLayout.setVerticalGroup(
             designationFieldContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(designationFieldContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel13)
+                .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(designationTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel6.add(designationFieldContainer);
+        jPanel3.add(designationFieldContainer);
 
         departmentFieldContainer.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel14.setText("Department");
+        jLabel8.setText("Department");
 
         javax.swing.GroupLayout departmentFieldContainerLayout = new javax.swing.GroupLayout(departmentFieldContainer);
         departmentFieldContainer.setLayout(departmentFieldContainerLayout);
@@ -419,58 +407,57 @@ public class AddNewEmployeePanel extends javax.swing.JPanel {
             .addGroup(departmentFieldContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(departmentFieldContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
+                    .addComponent(jLabel8)
                     .addComponent(departmentTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(572, Short.MAX_VALUE))
+                .addContainerGap(571, Short.MAX_VALUE))
         );
         departmentFieldContainerLayout.setVerticalGroup(
             departmentFieldContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(departmentFieldContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel14)
+                .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(departmentTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel6.add(departmentFieldContainer);
+        jPanel3.add(departmentFieldContainer);
 
-        createAccountBtnContainer2.setBackground(new java.awt.Color(255, 255, 255));
+        createAccountBtnContainer.setBackground(new java.awt.Color(255, 255, 255));
 
-        addEmployeeBtn.setText("Create New Employee");
-        addEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
+        createAccountBtn.setBackground(new java.awt.Color(0, 122, 255));
+        createAccountBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        createAccountBtn.setForeground(new java.awt.Color(255, 255, 255));
+        createAccountBtn.setText("Create New Account");
+        createAccountBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addEmployeeBtnActionPerformed(evt);
+                createAccountBtnActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout createAccountBtnContainer2Layout = new javax.swing.GroupLayout(createAccountBtnContainer2);
-        createAccountBtnContainer2.setLayout(createAccountBtnContainer2Layout);
-        createAccountBtnContainer2Layout.setHorizontalGroup(
-            createAccountBtnContainer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(createAccountBtnContainer2Layout.createSequentialGroup()
+        javax.swing.GroupLayout createAccountBtnContainerLayout = new javax.swing.GroupLayout(createAccountBtnContainer);
+        createAccountBtnContainer.setLayout(createAccountBtnContainerLayout);
+        createAccountBtnContainerLayout.setHorizontalGroup(
+            createAccountBtnContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createAccountBtnContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(addEmployeeBtn)
+                .addComponent(createAccountBtn)
                 .addContainerGap(671, Short.MAX_VALUE))
         );
-        createAccountBtnContainer2Layout.setVerticalGroup(
-            createAccountBtnContainer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(createAccountBtnContainer2Layout.createSequentialGroup()
+        createAccountBtnContainerLayout.setVerticalGroup(
+            createAccountBtnContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createAccountBtnContainerLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(addEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createAccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel6.add(createAccountBtnContainer2);
+        jPanel3.add(createAccountBtnContainer);
 
-        add(jPanel6);
+        add(jPanel3);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void designationTypeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_designationTypeFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_designationTypeFieldActionPerformed
-
-    private void addEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeBtnActionPerformed
+    private void createAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountBtnActionPerformed
         String userId = nextUserIdLabel.getText();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
@@ -484,22 +471,22 @@ public class AddNewEmployeePanel extends javax.swing.JPanel {
                 || department.isBlank() || designation.isBlank()) {
             JOptionPane.showMessageDialog(null,
                     "Check whether all the fields are filled correctly.",
-                    "Create new employee failed", JOptionPane.ERROR_MESSAGE);
+                    "Create new account failed", JOptionPane.ERROR_MESSAGE);
 
         } else if (!password.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(null,
                     "Password and the Confirm Password must match.",
-                    "Create new employee failed", JOptionPane.ERROR_MESSAGE);
+                    "Create new account failed", JOptionPane.ERROR_MESSAGE);
 
         } else if (password.length() < 8) {
             JOptionPane.showMessageDialog(null,
                     "Password must be at least 8 characters.",
-                    "Create new employee failed", JOptionPane.ERROR_MESSAGE);
+                    "Create new account failed", JOptionPane.ERROR_MESSAGE);
 
         } else if (userDataStorage.isUserAvailable(firstName, lastName, epfNumber)) {
             JOptionPane.showMessageDialog(null,
                     "An account with entered EPF number already exists.",
-                    "Create new employee failed", JOptionPane.ERROR_MESSAGE);
+                    "Create new account failed", JOptionPane.ERROR_MESSAGE);
         } else {
             User user = new User(userId, password, firstName, lastName, epfNumber, department, designation);
             boolean isAddedUserSuccess = userDataStorage.addUser(user);
@@ -510,38 +497,37 @@ public class AddNewEmployeePanel extends javax.swing.JPanel {
                         + "\nDepartment : " + department + "\nDesignation : " + designation;
 
                 JOptionPane.showMessageDialog(null,
-                        "Employee account created successfully.\n" + createdUserData,
-                        "Employee account created successfully.", JOptionPane.INFORMATION_MESSAGE);
+                        "Account created successfully.\n" + createdUserData,
+                        "Account created successfully.", JOptionPane.INFORMATION_MESSAGE);
 
-                clearAndSetAddNewEmployeePanelProperties();
+                clearAndSetCreateNewAccountPanelProperties();
             }
-        }
-    }//GEN-LAST:event_addEmployeeBtnActionPerformed
+        }    }//GEN-LAST:event_createAccountBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addEmployeeBtn;
     private javax.swing.JPasswordField confirmPasswordField;
-    private javax.swing.JPanel createAccountBtnContainer2;
+    private javax.swing.JButton createAccountBtn;
+    private javax.swing.JPanel createAccountBtnContainer;
     private javax.swing.JPanel departmentFieldContainer;
     private javax.swing.JComboBox<String> departmentTypeField;
     private javax.swing.JPanel designationFieldContainer;
     private javax.swing.JComboBox<String> designationTypeField;
     private javax.swing.JTextField epfNumberField;
-    private javax.swing.JPanel epfNumberFieldContainer2;
+    private javax.swing.JPanel epfNumberFieldContainer;
     private javax.swing.JTextField firstNameField;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;

@@ -2,11 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package UIPackage;
+package UIPackage.HRManager;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
 import ClassPackage.User;
+import UIPackage.Login.LoginFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -65,7 +66,7 @@ public class HRManagerFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HR Manager ");
         setMinimumSize(new java.awt.Dimension(0, 500));
-        setPreferredSize(new java.awt.Dimension(950, 700));
+        setPreferredSize(new java.awt.Dimension(1200, 700));
 
         sideBar.setMinimumSize(new java.awt.Dimension(220, 0));
         sideBar.setPreferredSize(new java.awt.Dimension(220, 499));
@@ -208,7 +209,7 @@ public class HRManagerFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
