@@ -4,6 +4,7 @@
  */
 package UIPackage;
 
+import UIPackage.Admin.AdminFrame;
 import ClassPackage.Admin;
 import ClassPackage.AuthService;
 import ClassPackage.User;

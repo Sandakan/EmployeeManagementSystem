@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package UIPackage;
+package UIPackage.Admin;
 
 import ClassPackage.Admin;
 import ClassPackage.Department;
@@ -11,6 +11,7 @@ import ClassPackage.DepartmentDataStorage;
 import ClassPackage.Designation;
 import ClassPackage.DesignationDataStorage;
 import ClassPackage.UserDataStorage;
+import UIPackage.LoginFrame;
 
 import java.util.ArrayList;
 
@@ -170,7 +171,6 @@ public class AdminFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin Profile");
-        setPreferredSize(new java.awt.Dimension(850, 666));
 
         jSplitPane1.setDividerSize(1);
 
