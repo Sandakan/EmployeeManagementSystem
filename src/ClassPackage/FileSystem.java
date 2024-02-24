@@ -41,6 +41,22 @@ abstract class FileSystem {
         }
     }
 
+    protected void writeDefaultRecords(ArrayList<String> defaultRecords) {
+        try {
+            boolean isFileEmpty = !file.exists() || file.length() == 0;
+
+            if (isFileEmpty) {
+                for (String record : defaultRecords) {
+                    appendFileData(record);
+                }
+                System.out.println("Successfully wrote default records to " + this.getFileName());
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error occurred when writing default records to the file." + e);
+        }
+    }
+
     private void createANewFile() {
         try {
             file.createNewFile();

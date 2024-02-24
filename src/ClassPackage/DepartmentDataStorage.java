@@ -3,20 +3,23 @@ package ClassPackage;
 import java.util.ArrayList;
 
 public class DepartmentDataStorage extends FileSystem {
-    // Department[] defaultDepartments = { new Department("1", "HR") };
+    Department[] defaultDepartments = { new Department("1", "HR") };
 
     public DepartmentDataStorage() {
         super("DEPARTMENTS");
-        // writeDefaultDepartments();
+        writeDefaultRecords(getDefaultDepartmentRecords());
     }
 
-    // public void writeDefaultDepartments() {
-    // for (Department department : defaultDepartments) {
-    // String[] departmentData = { department.getDepartmentId(),
-    // department.getName() };
-    // appendFileData(createRecord(departmentData));
-    // }
-    // }
+    private ArrayList<String> getDefaultDepartmentRecords() {
+        ArrayList<String> defaultDepartmentRecords = new ArrayList<>();
+
+        for (Department department : defaultDepartments) {
+            String departmentRecord = convertDepartmentToRecord(department);
+            defaultDepartmentRecords.add(departmentRecord);
+        }
+
+        return defaultDepartmentRecords;
+    }
 
     public ArrayList<Department> getData() {
         ArrayList<String[]> fileData = this.readFileData();
@@ -56,12 +59,17 @@ public class DepartmentDataStorage extends FileSystem {
         return String.valueOf(nextDepartmentId);
     }
 
+    private String convertDepartmentToRecord(Department department) {
+        String[] departmentDataString = { department.getDepartmentId(), department.getName() };
+
+        String record = createRecord(departmentDataString);
+        return record;
+    }
+
     public boolean addDepartment(Department department) {
         try {
-            String[] departmentDataString = { department.getDepartmentId(), department.getName() };
-
-            String record = createRecord(departmentDataString);
-            appendFileData(record);
+            String departmentRecord = convertDepartmentToRecord(department);
+            appendFileData(departmentRecord);
             return true;
         } catch (Exception e) {
             System.err.println("An error occurred when adding a new department." + e);

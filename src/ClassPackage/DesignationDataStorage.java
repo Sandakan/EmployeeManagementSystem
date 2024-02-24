@@ -3,21 +3,23 @@ package ClassPackage;
 import java.util.ArrayList;
 
 public class DesignationDataStorage extends FileSystem {
-    // Designation[] defaultDesignations = { new Designation("1", "HR_MANAGER"), new
-    // Designation("2", "HR_ASSISTANT") };
+    Designation[] defaultDesignations = { new Designation("1", "HR_MANAGER"), new Designation("2", "HR_ASSISTANT") };
 
     public DesignationDataStorage() {
         super("DESIGNATIONS");
-        // writeDefaultDesignations();
+        writeDefaultRecords(getDefaultDesignationRecords());
     }
 
-    // public void writeDefaultDesignations() {
-    // for (Designation designation : defaultDesignations) {
-    // String[] designationData = { designation.getDesignationId(),
-    // designation.getName() };
-    // appendFileData(createRecord(designationData));
-    // }
-    // }
+    private ArrayList<String> getDefaultDesignationRecords() {
+        ArrayList<String> defaultDesignationRecords = new ArrayList<>();
+
+        for (Designation designation : defaultDesignations) {
+            String designationRecord = convertDesignationToRecord(designation);
+            defaultDesignationRecords.add(designationRecord);
+        }
+
+        return defaultDesignationRecords;
+    }
 
     public ArrayList<Designation> getData() {
         ArrayList<String[]> fileData = this.readFileData();
@@ -55,12 +57,17 @@ public class DesignationDataStorage extends FileSystem {
         return String.valueOf(nextDesignationId);
     }
 
+    private String convertDesignationToRecord(Designation designation) {
+        String[] designationDataString = { designation.getDesignationId(), designation.getName() };
+
+        String record = createRecord(designationDataString);
+        return record;
+    }
+
     public boolean addDesignation(Designation designation) {
         try {
-            String[] designationDataString = { designation.getDesignationId(), designation.getName() };
-
-            String record = createRecord(designationDataString);
-            appendFileData(record);
+            String designationRecord = convertDesignationToRecord(designation);
+            appendFileData(designationRecord);
             return true;
         } catch (Exception e) {
             System.err.println("An error occurred when adding a new designation." + e);

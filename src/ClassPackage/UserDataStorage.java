@@ -3,9 +3,23 @@ package ClassPackage;
 import java.util.ArrayList;
 
 public class UserDataStorage extends FileSystem {
+    User[] defaultUsers = { new User("1", "admin", "Sandakan", "Nipunajith", null, "HEAD_OFFICE", "ADMIN") };
 
     public UserDataStorage() {
         super("USERS");
+        writeDefaultRecords(getDefaultUserRecords());
+
+    }
+
+    private ArrayList<String> getDefaultUserRecords() {
+        ArrayList<String> defaultUserRecords = new ArrayList<>();
+
+        for (User user : defaultUsers) {
+            String userRecord = convertUserToRecord(user);
+            defaultUserRecords.add(userRecord);
+        }
+
+        return defaultUserRecords;
     }
 
     public ArrayList<User> getData() {
@@ -49,13 +63,18 @@ public class UserDataStorage extends FileSystem {
         return String.valueOf(nextUserId);
     }
 
+    private String convertUserToRecord(User user) {
+        String[] userDataString = { user.getUserId(), user.getPassword(), user.getFirstName(), user.getLastName(),
+                user.getEpfNumber(), user.getDepartment(), user.getDesignation() };
+
+        String record = createRecord(userDataString);
+        return record;
+    }
+
     public boolean addUser(User user) {
         try {
-            String[] userDataString = { user.getUserId(), user.getPassword(), user.getFirstName(), user.getLastName(),
-                    user.getEpfNumber(), user.getDepartment(), user.getDesignation() };
-
-            String record = createRecord(userDataString);
-            appendFileData(record);
+            String userRecord = convertUserToRecord(user);
+            appendFileData(userRecord);
             return true;
         } catch (Exception e) {
             System.err.println("An error occurred when adding a new user." + e);
