@@ -49,12 +49,16 @@ public class DesignationDataStorage extends FileSystem {
     public String getNextDesignationId() {
         ArrayList<Designation> designationData = getData();
         int noOfDesignations = designationData.size();
-        Designation lastDesignation = designationData.get((noOfDesignations < 0) ? 0 : (noOfDesignations - 1));
+        if (noOfDesignations > 0) {
 
-        String lastDesignationId = lastDesignation.getDesignationId();
-        int nextDesignationId = (Integer.parseInt(lastDesignationId) + 1);
+            Designation lastDesignation = designationData.get((noOfDesignations - 1));
 
-        return String.valueOf(nextDesignationId);
+            String lastDesignationId = lastDesignation.getDesignationId();
+            int nextDesignationId = (Integer.parseInt(lastDesignationId) + 1);
+
+            return String.valueOf(nextDesignationId);
+        }
+        return "0";
     }
 
     private String convertDesignationToRecord(Designation designation) {

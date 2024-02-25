@@ -3,7 +3,7 @@ package ClassPackage;
 import java.util.ArrayList;
 
 public class UserDataStorage extends FileSystem {
-    User[] defaultUsers = { new User("1", "admin", "Sandakan", "Nipunajith", null, "HEAD_OFFICE", "ADMIN") };
+    User[] defaultUsers = { new User("1", "admin", "Sandakan", "Nipunajith", "ADMIN") };
 
     public UserDataStorage() {
         super("USERS");
@@ -27,26 +27,27 @@ public class UserDataStorage extends FileSystem {
         ArrayList<User> userData = new ArrayList<User>();
 
         for (String[] data : fileData) {
-            String id = data[0];
-            String pass = data[1];
-            String firstName = data[2];
-            String lastName = data[3];
-            String epfNumber = data[4];
-            String department = data[5];
-            String designation = data[6];
+            if (data.length >= 5) {
+                String id = data[0];
+                String pass = data[1];
+                String firstName = data[2];
+                String lastName = data[3];
+                String userType = data[4];
 
-            User user = new User(id, pass, firstName, lastName, epfNumber, department, designation);
-            userData.add(user);
+                User user = new User(id, pass, firstName, lastName, userType);
+                userData.add(user);
+            }
         }
 
         return userData;
     }
 
-    public boolean isUserAvailable(String firstName, String lastName, String epfNumber) {
+    public boolean isUserAvailable(String firstName, String lastName, String userType) {
         ArrayList<User> userData = getData();
 
         for (User user : userData) {
-            if (user.getEpfNumber().equals(epfNumber))
+            if (user.getFirstName().equals(firstName) && user.getLastName().equals(lastName)
+                    && user.getUserId().equals(userType))
                 return true;
         }
         return false;
@@ -55,17 +56,20 @@ public class UserDataStorage extends FileSystem {
     public String getNextUserId() {
         ArrayList<User> userData = getData();
         int noOfUsers = userData.size();
-        User lastUser = userData.get((noOfUsers < 0) ? 0 : (noOfUsers - 1));
 
-        String lastUserId = lastUser.getUserId();
-        int nextUserId = (Integer.parseInt(lastUserId) + 1);
+        if (noOfUsers > 0) {
+            User lastUser = userData.get((noOfUsers - 1));
+            String lastUserId = lastUser.getUserId();
+            int nextUserId = (Integer.parseInt(lastUserId) + 1);
 
-        return String.valueOf(nextUserId);
+            return String.valueOf(nextUserId);
+        }
+        return "0";
     }
 
     private String convertUserToRecord(User user) {
         String[] userDataString = { user.getUserId(), user.getPassword(), user.getFirstName(), user.getLastName(),
-                user.getEpfNumber(), user.getDepartment(), user.getDesignation() };
+                user.getUserType() };
 
         String record = createRecord(userDataString);
         return record;
@@ -80,36 +84,5 @@ public class UserDataStorage extends FileSystem {
             System.err.println("An error occurred when adding a new user." + e);
         }
         return false;
-    }
-
-    public ArrayList<User> searchEmployees(String firstName, String lastName, String epfNumber, String department,
-            String designation) {
-        ArrayList<User> userData = getData();
-        ArrayList<User> filteredUserData = new ArrayList<>();
-
-        for (User user : userData) {
-            boolean isFirstNameAvailable = ((firstName != null && !firstName.isBlank())
-                    ? (user.getFirstName().toLowerCase().contains(firstName.toLowerCase()))
-                    : true);
-            boolean isLastNameAvailable = ((lastName != null && !lastName.isBlank())
-                    ? (user.getLastName().toLowerCase().contains(lastName.toLowerCase()))
-                    : true);
-            boolean isEpfNumberAvailable = ((epfNumber != null && !epfNumber.isBlank())
-                    ? (user.getEpfNumber().toLowerCase().contains(epfNumber.toLowerCase()))
-                    : true);
-            boolean isDepartmentAvailable = ((department != null && !department.isBlank())
-                    ? (user.getDepartment().equals(department))
-                    : true);
-            boolean isDesignationAvailable = ((designation != null && !designation.isBlank())
-                    ? (user.getDesignation().equals(designation))
-                    : true);
-
-            if (isFirstNameAvailable && isLastNameAvailable && isEpfNumberAvailable && isDepartmentAvailable
-                    && isDesignationAvailable) {
-                filteredUserData.add(user);
-            }
-        }
-
-        return filteredUserData;
     }
 }

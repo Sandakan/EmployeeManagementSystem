@@ -6,10 +6,11 @@ package UIPackage.HRManager;
 
 import ClassPackage.Department;
 import ClassPackage.Designation;
-import ClassPackage.User;
-import ClassPackage.UserDataStorage;
 import ClassPackage.DepartmentDataStorage;
 import ClassPackage.DesignationDataStorage;
+import ClassPackage.Employee;
+import ClassPackage.EmployeeDataStorage;
+
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
@@ -21,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SearchEmployeesPanel extends javax.swing.JPanel {
 
-    private UserDataStorage userDataStorage;
+    private EmployeeDataStorage employeeDataStorage;
     private DepartmentDataStorage departmentDataStorage;
     private DesignationDataStorage designationDataStorage;
 
@@ -29,7 +30,7 @@ public class SearchEmployeesPanel extends javax.swing.JPanel {
      * Creates new form SearchEmployeesPanel
      */
     public SearchEmployeesPanel() {
-        this.userDataStorage = new UserDataStorage();
+        this.employeeDataStorage = new EmployeeDataStorage();
         this.departmentDataStorage = new DepartmentDataStorage();
         this.designationDataStorage = new DesignationDataStorage();
         initComponents();
@@ -37,30 +38,31 @@ public class SearchEmployeesPanel extends javax.swing.JPanel {
         searchEmployees();
     }
 
-    private void showFoundUsersInTable(ArrayList<User> users) {
-        ArrayList<String[]> userData = new ArrayList<>();
+    private void showFoundEmployeesInTable(ArrayList<Employee> employees) {
+        ArrayList<String[]> employeeData = new ArrayList<>();
         String[] columnNames = {
-                "User ID", "First Name", "Last Name", "Department", "Designation"
+                "Employee ID", "First Name", "Last Name", "EPF Number", "Department", "Designation"
         };
-        for (User user : users) {
+        for (Employee employee : employees) {
             String[] record = {
-                    user.getUserId(), user.getFirstName(), user.getLastName(), user.getDepartment(),
-                    user.getDesignation()
+                    employee.getEmployeeId(), employee.getFirstName(), employee.getLastName(), employee.getEpfNumber(),
+                    employee.getDepartment(),
+                    employee.getDesignation()
             };
-            userData.add(record);
+            employeeData.add(record);
         }
 
-        int noOfRecords = userData.size();
+        int noOfRecords = employeeData.size();
         noOfRecordsLabel.setText(String.valueOf(noOfRecords));
 
         if (noOfRecords > 0) {
-            String[][] userDataStrings = new String[5][userData.size()];
-            userDataStrings = userData.toArray(userDataStrings);
-            usersTable.setModel(new DefaultTableModel(
-                    userDataStrings, columnNames));
+            String[][] employeeDataStrings = new String[6][employeeData.size()];
+            employeeDataStrings = employeeData.toArray(employeeDataStrings);
+            employeesTable.setModel(new DefaultTableModel(
+                    employeeDataStrings, columnNames));
         } else {
-            usersTable.setModel(new DefaultTableModel(
-                    new Object[][] { null, null, null, null, null }, columnNames));
+            employeesTable.setModel(new DefaultTableModel(
+                    new Object[][] { null, null, null, null, null, null }, columnNames));
         }
 
     }
@@ -74,9 +76,10 @@ public class SearchEmployeesPanel extends javax.swing.JPanel {
         String designation = designationTypeField.getSelectedItem().toString().equals("NOT_SELECTED") ? ""
                 : designationTypeField.getSelectedItem().toString();
 
-        ArrayList<User> filteredUsers = userDataStorage.searchEmployees(firstName, lastName, epfNumber, department,
+        ArrayList<Employee> filteredEmployees = employeeDataStorage.searchEmployees(firstName, lastName, epfNumber,
+                department,
                 designation);
-        showFoundUsersInTable(filteredUsers);
+        showFoundEmployeesInTable(filteredEmployees);
     }
 
     private void setDepartmentAndDesignationComboBoxItems() {
@@ -115,6 +118,7 @@ public class SearchEmployeesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -144,7 +148,7 @@ public class SearchEmployeesPanel extends javax.swing.JPanel {
         noOfRecordsLabel = new javax.swing.JLabel();
         noOfRecords1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        usersTable = new javax.swing.JTable();
+        employeesTable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -434,22 +438,22 @@ public class SearchEmployeesPanel extends javax.swing.JPanel {
 
         jScrollPane2.setPreferredSize(new java.awt.Dimension(700, 406));
 
-        usersTable.setModel(new javax.swing.table.DefaultTableModel(
+        employeesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "User ID", "First Name", "Last Name", "Department", "Designation"
+                "User ID", "First Name", "Last Name", "EPF Number", "Department", "Designation"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -460,9 +464,9 @@ public class SearchEmployeesPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        usersTable.setPreferredSize(new java.awt.Dimension(700, 80));
-        usersTable.setShowGrid(true);
-        jScrollPane2.setViewportView(usersTable);
+        employeesTable.setPreferredSize(new java.awt.Dimension(700, 80));
+        employeesTable.setShowGrid(true);
+        jScrollPane2.setViewportView(employeesTable);
 
         jPanel1.add(jScrollPane2);
 
@@ -476,7 +480,7 @@ public class SearchEmployeesPanel extends javax.swing.JPanel {
         departmentTypeField.setSelectedIndex(0);
         designationTypeField.setSelectedIndex(0);
 
-        showFoundUsersInTable(userDataStorage.searchEmployees("", "", "", "", ""));
+        showFoundEmployeesInTable(employeeDataStorage.searchEmployees("", "", "", "", ""));
     }// GEN-LAST:event_clearFiltersBtnActionPerformed
 
     private void epfNumberFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_epfNumberFieldActionPerformed
@@ -504,6 +508,7 @@ public class SearchEmployeesPanel extends javax.swing.JPanel {
     private javax.swing.JButton clearFiltersBtn;
     private javax.swing.JComboBox<String> departmentTypeField;
     private javax.swing.JComboBox<String> designationTypeField;
+    private javax.swing.JTable employeesTable;
     private javax.swing.JTextField epfNumberField;
     private javax.swing.JTextField firstNameField;
     private javax.swing.JLabel jLabel10;
@@ -527,6 +532,5 @@ public class SearchEmployeesPanel extends javax.swing.JPanel {
     private javax.swing.JLabel noOfRecordsLabel;
     private javax.swing.JPanel searchControlsContainer;
     private javax.swing.JButton searchEmployeesBtn;
-    private javax.swing.JTable usersTable;
     // End of variables declaration//GEN-END:variables
 }

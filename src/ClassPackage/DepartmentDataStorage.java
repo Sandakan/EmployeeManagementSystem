@@ -51,12 +51,16 @@ public class DepartmentDataStorage extends FileSystem {
     public String getNextDepartmentId() {
         ArrayList<Department> departmentData = getData();
         int noOfDepartments = departmentData.size();
-        Department lastDepartment = departmentData.get((noOfDepartments < 0) ? 0 : (noOfDepartments - 1));
 
-        String lastDepartmentId = lastDepartment.getDepartmentId();
-        int nextDepartmentId = (Integer.parseInt(lastDepartmentId) + 1);
+        if (noOfDepartments > 0) {
+            Department lastDepartment = departmentData.get((noOfDepartments - 1));
 
-        return String.valueOf(nextDepartmentId);
+            String lastDepartmentId = lastDepartment.getDepartmentId();
+            int nextDepartmentId = (Integer.parseInt(lastDepartmentId) + 1);
+
+            return String.valueOf(nextDepartmentId);
+        }
+        return "0";
     }
 
     private String convertDepartmentToRecord(Department department) {
