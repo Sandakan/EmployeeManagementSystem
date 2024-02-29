@@ -2,11 +2,22 @@ package ClassPackage;
 
 import java.util.ArrayList;
 
+/* 
+ * Employee Data Storage class
+ * 
+ * Used to handle data related to employees.
+ * Uses the FileSystem class to access files.
+ * 
+ */
 public class EmployeeDataStorage extends FileSystem {
     public EmployeeDataStorage() {
         super("EMPLOYEES");
     }
 
+    /**
+     * Used to get employee data.
+     * Returns an arraylist of Employee instances that can be iterated.
+     */
     public ArrayList<Employee> getData() {
         ArrayList<String[]> fileData = this.readFileData();
         ArrayList<Employee> employeeData = new ArrayList<Employee>();
@@ -26,6 +37,10 @@ public class EmployeeDataStorage extends FileSystem {
         return employeeData;
     }
 
+    /**
+     * Checks whether there is a employee available with the provided firstName,
+     * lastName and epfNumber
+     */
     public boolean isEmployeeAvailable(String firstName, String lastName, String epfNumber) {
         ArrayList<Employee> employeeData = getData();
 
@@ -36,6 +51,12 @@ public class EmployeeDataStorage extends FileSystem {
         return false;
     }
 
+    /**
+     * Used to get the next employee id by reading available employee ids and
+     * determining
+     * the next integer as the next employee id
+     * Returns 0 if there are no records
+     */
     public String getNextEmployeeId() {
         ArrayList<Employee> employeeData = getData();
         int noOfEmployees = employeeData.size();
@@ -50,6 +71,7 @@ public class EmployeeDataStorage extends FileSystem {
         return "0";
     }
 
+    /** Used to convert a Employee instance to a string so that it can be saved */
     private String convertEmployeeToRecord(Employee employee) {
         String[] employeeDataString = { employee.getEmployeeId(), employee.getFirstName(), employee.getLastName(),
                 employee.getEpfNumber(), employee.getDepartment(), employee.getDesignation() };
@@ -58,6 +80,7 @@ public class EmployeeDataStorage extends FileSystem {
         return record;
     }
 
+    /** Used to add a new employee to the system */
     public boolean addEmployee(Employee employee) {
         try {
             String employeeRecord = convertEmployeeToRecord(employee);
@@ -69,12 +92,23 @@ public class EmployeeDataStorage extends FileSystem {
         return false;
     }
 
+    /**
+     * Used to search employees by different search criteria
+     * 
+     */
     public ArrayList<Employee> searchEmployees(String firstName, String lastName, String epfNumber, String department,
             String designation) {
         ArrayList<Employee> employeeData = getData();
         ArrayList<Employee> filteredEmployeeData = new ArrayList<>();
 
         for (Employee employee : employeeData) {
+            /*
+             * Checks whether the parameter is null or blank,
+             * Then checks if the lowercased string parameter will match
+             * 
+             * If parameter is null or blank, the trinary operator will return true.
+             * Else it will go to check for the parameter and return either true or false
+             */
             boolean isFirstNameAvailable = ((firstName != null && !firstName.isBlank())
                     ? (employee.getFirstName().toLowerCase().contains(firstName.toLowerCase()))
                     : true);

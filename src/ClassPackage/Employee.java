@@ -1,5 +1,8 @@
 package ClassPackage;
 
+/* 
+ * Department Class
+ */
 public class Employee {
     private String employeeId;
     private String firstName;
@@ -42,6 +45,10 @@ public class Employee {
         return designation;
     }
 
+    /**
+     * Employee constructor used to add data to an Employee instance with the
+     * default designation of "EMPLOYEE"
+     */
     public Employee(String employeeId, String firstName, String lastName, String epfNumber,
             String department) {
         this.employeeId = employeeId;

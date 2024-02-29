@@ -2,6 +2,13 @@ package ClassPackage;
 
 import java.util.ArrayList;
 
+/* 
+ * User Data Storage class
+ * 
+ * Used to handle data related to user accounts.
+ * Uses the FileSystem class to access files.
+ * 
+ */
 public class UserDataStorage extends FileSystem {
     User[] defaultUsers = { new User("1", "admin", "Sandakan", "Nipunajith", "ADMIN") };
 
@@ -11,6 +18,7 @@ public class UserDataStorage extends FileSystem {
 
     }
 
+    /** Write default records if the users.txt file is empty. */
     private ArrayList<String> getDefaultUserRecords() {
         ArrayList<String> defaultUserRecords = new ArrayList<>();
 
@@ -22,6 +30,10 @@ public class UserDataStorage extends FileSystem {
         return defaultUserRecords;
     }
 
+    /**
+     * Used to get user data.
+     * Returns an arraylist of User instances that can be iterated.
+     */
     public ArrayList<User> getData() {
         ArrayList<String[]> fileData = this.readFileData();
         ArrayList<User> userData = new ArrayList<User>();
@@ -42,6 +54,10 @@ public class UserDataStorage extends FileSystem {
         return userData;
     }
 
+    /**
+     * Checks whether there is a user available with the provided firstName,
+     * lastName and userType
+     */
     public boolean isUserAvailable(String firstName, String lastName, String userType) {
         ArrayList<User> userData = getData();
 
@@ -53,6 +69,11 @@ public class UserDataStorage extends FileSystem {
         return false;
     }
 
+    /**
+     * Used to get the next user id by reading available user ids and determining
+     * the next integer as the next user id
+     * Returns 0 if there are no records
+     */
     public String getNextUserId() {
         ArrayList<User> userData = getData();
         int noOfUsers = userData.size();
@@ -67,6 +88,7 @@ public class UserDataStorage extends FileSystem {
         return "0";
     }
 
+    /** Used to convert a User instance to a string so that it can be saved */
     private String convertUserToRecord(User user) {
         String[] userDataString = { user.getUserId(), user.getPassword(), user.getFirstName(), user.getLastName(),
                 user.getUserType() };
@@ -75,6 +97,7 @@ public class UserDataStorage extends FileSystem {
         return record;
     }
 
+    /** Used to add a new user to the system */
     public boolean addUser(User user) {
         try {
             String userRecord = convertUserToRecord(user);

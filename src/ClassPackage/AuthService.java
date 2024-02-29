@@ -2,6 +2,12 @@ package ClassPackage;
 
 import java.util.ArrayList;
 
+/* 
+ * AuthService class
+ * 
+ * Used to authenticate user accounts
+ * 
+ */
 final public class AuthService {
     protected UserDataStorage userDataStorage;
 

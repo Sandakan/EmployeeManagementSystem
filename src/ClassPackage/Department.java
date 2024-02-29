@@ -1,5 +1,8 @@
 package ClassPackage;
 
+/* 
+ * Department Class
+ */
 public class Department {
     private String departmentId;
     private String name;

@@ -17,6 +17,9 @@ import java.util.Scanner;
  * @author adsan
  */
 
+/*
+ * FileSystem class
+ */
 abstract class FileSystem {
 
     final private String dataSeperator = ":";
@@ -25,15 +28,25 @@ abstract class FileSystem {
 
     File file;
 
+    /**
+     * Constructor to initialize the FileSystem
+     * 
+     * @param fileName file name without the file extension to be used to store data
+     */
     public FileSystem(String fileName) {
         this.fileName = fileName;
         initialize();
     }
 
+    /** Checks whether the specified file exists */
     public boolean isFileAvailable() {
         return file.exists();
     }
 
+    /**
+     * Checks whether the parent folder of the data file exists, creating the parent
+     * folder if doesn't
+     */
     private void createParentFolder() {
         File parentFolder = new File(filePath);
         if (!parentFolder.exists()) {
@@ -41,6 +54,10 @@ abstract class FileSystem {
         }
     }
 
+    /**
+     * Used to write default records of data if there are no records available in
+     * the data file
+     */
     protected void writeDefaultRecords(ArrayList<String> defaultRecords) {
         try {
             boolean isFileEmpty = !file.exists() || file.length() == 0;
@@ -57,6 +74,9 @@ abstract class FileSystem {
         }
     }
 
+    /**
+     * Creates a new file with the specified file name in a pre-defined parent path.
+     */
     private void createANewFile() {
         try {
             file.createNewFile();
@@ -67,6 +87,7 @@ abstract class FileSystem {
         }
     }
 
+    /** Used to initialize the main methods of the FileSystem */
     private void initialize() {
         this.file = new File(getFullFilePath());
 
@@ -76,18 +97,24 @@ abstract class FileSystem {
         }
     }
 
+    /** Used to join an array of strings to a single string */
     public String createRecord(String[] data) {
         return String.join(dataSeperator, data);
     }
 
+    /** Returns the file name with the file extension */
     public String getFileName() {
         return fileName + ".txt";
     }
 
+    /** Returns the full file path with the file extension */
     private String getFullFilePath() {
         return filePath + getFileName();
     }
 
+    /**
+     * Returns the read records from the data file as array list with string arrays
+     */
     protected ArrayList<String[]> readFileData() {
         ArrayList<String[]> records = new ArrayList<String[]>();
 
@@ -110,6 +137,9 @@ abstract class FileSystem {
         return records;
     }
 
+    /**
+     * Used to write data to the data file as a record, with the option to append
+     */
     protected void writeFileData(String data, boolean append) {
         try {
             FileWriter writer = new FileWriter(file, append);
@@ -125,6 +155,7 @@ abstract class FileSystem {
         }
     }
 
+    /** Used to append data to the data file as a record */
     public void appendFileData(String data) {
         writeFileData(data, true);
     }

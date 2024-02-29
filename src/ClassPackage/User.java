@@ -1,5 +1,8 @@
 package ClassPackage;
 
+/**
+ * User class
+ */
 public class User {
 
     private String userId;
@@ -28,6 +31,10 @@ public class User {
         return userType;
     }
 
+    /**
+     * Used to check credentials without returning the password to prevent password
+     * fields
+     */
     public boolean checkCredentials(String password) {
         return getPassword().equals(password);
     }

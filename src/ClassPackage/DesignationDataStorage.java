@@ -2,6 +2,13 @@ package ClassPackage;
 
 import java.util.ArrayList;
 
+/* 
+ * Designation Data Storage class
+ * 
+ * Used to handle data related to designations.
+ * Uses the FileSystem class to access files.
+ * 
+ */
 public class DesignationDataStorage extends FileSystem {
     Designation[] defaultDesignations = { new Designation("1", "HR_MANAGER"), new Designation("2", "HR_ASSISTANT") };
 
@@ -10,6 +17,7 @@ public class DesignationDataStorage extends FileSystem {
         writeDefaultRecords(getDefaultDesignationRecords());
     }
 
+    /** Write default records if the designations.txt file is empty. */
     private ArrayList<String> getDefaultDesignationRecords() {
         ArrayList<String> defaultDesignationRecords = new ArrayList<>();
 
@@ -21,6 +29,10 @@ public class DesignationDataStorage extends FileSystem {
         return defaultDesignationRecords;
     }
 
+    /**
+     * Used to get designation data.
+     * Returns an arraylist of Designation instances that can be iterated.
+     */
     public ArrayList<Designation> getData() {
         ArrayList<String[]> fileData = this.readFileData();
         ArrayList<Designation> designationData = new ArrayList<Designation>();
@@ -36,6 +48,9 @@ public class DesignationDataStorage extends FileSystem {
         return designationData;
     }
 
+    /**
+     * Checks whether there is a designation available with the provided name
+     */
     public boolean isDesignationAvailable(String name) {
         ArrayList<Designation> designationData = getData();
 
@@ -46,6 +61,12 @@ public class DesignationDataStorage extends FileSystem {
         return false;
     }
 
+    /**
+     * Used to get the next designation id by reading available designation ids and
+     * determining
+     * the next integer as the next designation id
+     * Returns 0 if there are no records
+     */
     public String getNextDesignationId() {
         ArrayList<Designation> designationData = getData();
         int noOfDesignations = designationData.size();
@@ -61,6 +82,9 @@ public class DesignationDataStorage extends FileSystem {
         return "0";
     }
 
+    /**
+     * Used to convert a Designation instance to a string so that it can be saved
+     */
     private String convertDesignationToRecord(Designation designation) {
         String[] designationDataString = { designation.getDesignationId(), designation.getName() };
 
@@ -68,6 +92,7 @@ public class DesignationDataStorage extends FileSystem {
         return record;
     }
 
+    /** Used to add a new designation to the system */
     public boolean addDesignation(Designation designation) {
         try {
             String designationRecord = convertDesignationToRecord(designation);

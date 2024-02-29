@@ -32,6 +32,9 @@ public class HRManagerFrame extends javax.swing.JFrame {
         setHRManagerFrameProperties();
     }
 
+    /**
+     * Used to set the name and the user type on the frame
+     */
     private void setHRManagerFrameProperties() {
         userNameLabel.setText(hrManager.getFirstName());
         userTypeLabel.setText("(" + hrManager.getUserType() + ")");
@@ -44,13 +47,14 @@ public class HRManagerFrame extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         sideBar = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         userTypeLabel = new javax.swing.JLabel();
         userNameLabel = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -69,15 +73,23 @@ public class HRManagerFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(0, 500));
         setPreferredSize(new java.awt.Dimension(1200, 700));
 
+        jSplitPane1.setBackground(new java.awt.Color(249, 249, 249));
+
+        sideBar.setBackground(new java.awt.Color(249, 249, 249));
         sideBar.setMinimumSize(new java.awt.Dimension(220, 0));
         sideBar.setPreferredSize(new java.awt.Dimension(220, 499));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Welcome,");
+        jLabel4.setBackground(new java.awt.Color(249, 249, 249));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/banner-logo-small.png"))); // NOI18N
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        jPanel2.setBackground(new java.awt.Color(249, 249, 249));
+
+        userTypeLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         userTypeLabel.setText("(HR_MANAGER)");
 
         userNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        userNameLabel.setForeground(new java.awt.Color(0, 122, 255));
         userNameLabel.setText("Sandakan");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -87,23 +99,19 @@ public class HRManagerFrame extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(userNameLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(userTypeLabel))
-                                        .addComponent(jLabel1))
-                                .addContainerGap()));
+                                        .addComponent(userNameLabel)
+                                        .addComponent(userTypeLabel))
+                                .addGap(98, 98, 98)));
         jPanel2Layout.setVerticalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(userNameLabel)
-                                        .addComponent(userTypeLabel))
-                                .addContainerGap()));
+                                .addComponent(userNameLabel)
+                                .addGap(0, 0, 0)
+                                .addComponent(userTypeLabel)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
+        jPanel4.setBackground(new java.awt.Color(249, 249, 249));
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.Y_AXIS));
 
         createNewDepartmentPanelShowBtn.setText("Add new Department");
@@ -150,6 +158,7 @@ public class HRManagerFrame extends javax.swing.JFrame {
         });
         jPanel4.add(createNewDepartmentPanelShowBtn4);
 
+        jPanel5.setBackground(new java.awt.Color(249, 249, 249));
         jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.Y_AXIS));
 
         logoutBtn.setText("Log out");
@@ -166,29 +175,41 @@ public class HRManagerFrame extends javax.swing.JFrame {
         sideBar.setLayout(sideBarLayout);
         sideBarLayout.setHorizontalGroup(
                 sideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(sideBarLayout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 6, Short.MAX_VALUE))
                         .addGroup(sideBarLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                                .addGroup(sideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(sideBarLayout
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(sideBarLayout
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)))
                                 .addContainerGap()));
         sideBarLayout.setVerticalGroup(
                 sideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(sideBarLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 71,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE,
                                         javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(52, 52, 52)
+                                .addGap(18, 18, 18)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE,
                                         javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 42,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap()));
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330,
+                                        Short.MAX_VALUE)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 49,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)));
 
         jSplitPane1.setLeftComponent(sideBar);
 
@@ -212,7 +233,7 @@ public class HRManagerFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE));
+                        .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jSplitPane1));
@@ -286,8 +307,8 @@ public class HRManagerFrame extends javax.swing.JFrame {
     private javax.swing.JButton createNewDepartmentPanelShowBtn4;
     private javax.swing.JButton createNewDesignationPanelShowBtn;
     private javax.swing.JPanel defaultPanel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
