@@ -192,7 +192,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jSplitPane1.setLeftComponent(sideBar);
 
         body.setBackground(new java.awt.Color(255, 255, 255));
-        body.setLayout(new java.awt.CardLayout());
+        body.setLayout(new java.awt.CardLayout(10, 10));
 
         defaultPanel.setBackground(new java.awt.Color(255, 255, 255));
         defaultPanel.setLayout(new java.awt.BorderLayout(10, 10));
